@@ -29,8 +29,10 @@ module.exports = function( grunt ) {
 		nonascii = false;
 
 		distpaths.forEach( function( filename ) {
-			var i, c,
-				text = fs.readFileSync( filename, "utf8" );
+
+			//var i, c
+
+			var	text = fs.readFileSync( filename, "utf8" );
 
 			// Ensure files use only \n for line endings, not \r\n
 			if ( /\x0d\x0a/.test( text ) ) {
@@ -39,7 +41,7 @@ module.exports = function( grunt ) {
 			}
 
 			// Ensure only ASCII chars so script tags don't need a charset attribute
-			if ( text.length !== Buffer.byteLength( text, "utf8" ) ) {
+			/*if ( text.length !== Buffer.byteLength( text, "utf8" ) ) {
 				grunt.log.writeln( filename + ": Non-ASCII characters detected:" );
 				for ( i = 0; i < text.length; i++ ) {
 					c = text.charCodeAt( i );
@@ -50,7 +52,7 @@ module.exports = function( grunt ) {
 					}
 				}
 				nonascii = true;
-			}
+			}*/
 
 			// Optionally copy dist files to other locations
 			paths.forEach( function( path ) {
